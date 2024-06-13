@@ -41,95 +41,97 @@ namespace Ejercicio_2
                     i++;
                 }
             } while (alumno != "0");
-                
-            
-            do
+
+            if (alumno != "0")
             {
-                Console.Clear();
-                Console.WriteLine("1 - Calcular Promedio");
-                Console.WriteLine("2 - Alumnos Mayor Al Promedio");
-                Console.WriteLine("3 - Buscar Alumno");
-                Console.WriteLine("4 - Dentro De Lista Mayor Promedio (Alumno Mayor Promedio - Alumno Menor Promedio)");
-                Console.WriteLine("0 - Salir/Otros");
-                opcion = Convert.ToInt32(Console.ReadLine());
-
-                switch (opcion)
+                do
                 {
-                    case 1:
-                        {
-                            Console.Clear();
-                            CalcularPromedio();
-                            Console.WriteLine($"El promedio de nota de los alumnos es de {promedio} ");
-                        }
-                        break;
-                    case 2:
-                        {
-                            Console.Clear();
-                            if (j == 0)
-                            {
-                                CalcularPromedio();
-                                alumnosmayor();
-                                ordenamientoburbuja();
-                            }
+                    Console.Clear();
+                    Console.WriteLine("1 - Calcular Promedio");
+                    Console.WriteLine("2 - Alumnos Mayor Al Promedio");
+                    Console.WriteLine("3 - Buscar Alumno");
+                    Console.WriteLine("4 - Dentro De Lista Mayor Promedio (Alumno Mayor Promedio - Alumno Menor Promedio)");
+                    Console.WriteLine("0 - Salir/Otros");
+                    opcion = Convert.ToInt32(Console.ReadLine());
 
-                            for(int l = j-1; l>-1; l--)
+                    switch (opcion)
+                    {
+                        case 1:
                             {
-                                Console.WriteLine($"- Alumno: {mayornombre[l]}");
-                                Console.WriteLine($"- Numero Libreta: {mayorlibreta[l]}");
-                                Console.WriteLine($"- Nota: {mayornotas[l]}");
-                                Console.WriteLine(""); 
+                                Console.Clear();
+                                CalcularPromedio();
+                                Console.WriteLine($"El promedio de nota de los alumnos es de {promedio} ");
+                            }
+                            break;
+                        case 2:
+                            {
+                                Console.Clear();
+                                if (j == 0)
+                                {
+                                    CalcularPromedio();
+                                    alumnosmayor();
+                                    ordenamientoburbuja();
+                                }
+
+                                for (int l = j - 1; l > -1; l--)
+                                {
+                                    Console.WriteLine($"- Alumno: {mayornombre[l]}");
+                                    Console.WriteLine($"- Numero Libreta: {mayorlibreta[l]}");
+                                    Console.WriteLine($"- Nota: {mayornotas[l]}");
+                                    Console.WriteLine("");
+                                    Console.WriteLine("");
+                                }
+
+                            }
+                            break;
+                        case 3:
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Libreta del alumno que quiere buscar");
+                                int lib = Convert.ToInt32(Console.ReadLine());
+                                int posicion = buscaralumno(lib);
+                                if (posicion != -1)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"- Alumno: {nombre[posicion]}");
+                                    Console.WriteLine($"- Numero Libreta: {libreta[posicion]}");
+                                    Console.WriteLine($"- Nota: {notas[posicion]}");
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("¡Alumno no encontrado!");
+                                }
+
+                            }
+                            break;
+                        case 4:
+                            {
+                                Console.Clear();
+                                if (j == 0)
+                                {
+                                    CalcularPromedio();
+                                    alumnosmayor();
+                                    ordenamientoburbuja();
+                                }
+                                Console.WriteLine($"- Alumno: {mayornombre[j - 1]}");
+                                Console.WriteLine($"- Numero Libreta: {mayorlibreta[j - 1]}");
+                                Console.WriteLine($"- Nota: {mayornotas[j - 1]}");
                                 Console.WriteLine("");
-                            }
+                                Console.WriteLine("------------------------------------------------------------");
+                                Console.WriteLine($"- Alumno: {mayornombre[0]}");
+                                Console.WriteLine($"- Numero Libreta: {mayorlibreta[0]}");
+                                Console.WriteLine($"- Nota: {mayornotas[0]}");
 
-                        }
-                        break;
-                    case 3:
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Libreta del alumno que quiere buscar");
-                            int lib = Convert.ToInt32(Console.ReadLine());
-                            int posicion = buscaralumno(lib);
-                            if (posicion != -1)
-                            {
-                                Console.Clear();
-                                Console.WriteLine($"- Alumno: {nombre[posicion]}");
-                                Console.WriteLine($"- Numero Libreta: {libreta[posicion]}");
-                                Console.WriteLine($"- Nota: {notas[posicion]}");
                             }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine("¡Alumno no encontrado!");
-                            }
-                           
-                        }
-                        break;
-                    case 4:
-                        {
-                            Console.Clear();
-                            if (j == 0)
-                            {
-                                CalcularPromedio();
-                                alumnosmayor();
-                                ordenamientoburbuja();
-                            }
-                            Console.WriteLine($"- Alumno: {mayornombre[j-1]}");
-                            Console.WriteLine($"- Numero Libreta: {mayorlibreta[j-1]}");
-                            Console.WriteLine($"- Nota: {mayornotas[j-1]}");
-                            Console.WriteLine("");
-                            Console.WriteLine("------------------------------------------------------------");
-                            Console.WriteLine($"- Alumno: {mayornombre[0]}");
-                            Console.WriteLine($"- Numero Libreta: {mayorlibreta[0]}");
-                            Console.WriteLine($"- Nota: {mayornotas[0]}");
-
-                        }
-                        break;
-                }
-                if (opcion != 0)
-                {
-                    Console.ReadKey();
-                }
-            } while (opcion != 0);
+                            break;
+                    }
+                    if (opcion != 0)
+                    {
+                        Console.ReadKey();
+                    }
+                } while (opcion != 0);
+            }
         }
 
         static void guardarnombre(string alumno)
